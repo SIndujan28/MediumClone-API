@@ -1,5 +1,6 @@
 const devConfig = {
   MONGO_URL: 'mongodb://127.0.0.1/blogapi-dev',
+  JWT_SECRET: 'AMIGOOS',
 };
 
 const testConfig = {
