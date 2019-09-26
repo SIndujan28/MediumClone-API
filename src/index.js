@@ -7,7 +7,7 @@ import './config/database';
 
 import middlewaresConfig from './config/middlewares';
 
-import apiRoutes from './modules/users';
+import apiRoutes from './modules';
 
 const app = express();
 

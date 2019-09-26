@@ -24,7 +24,7 @@ const localStrategy = new LocalStrategy(LocalOpts, async (email, password, done)
 });
 
 const jwtOpts = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('authorization'),
+  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   secretOrKey: constants.JWT_SECRET,
 };
 
