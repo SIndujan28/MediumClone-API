@@ -72,12 +72,18 @@ userSchema.methods = {
       constants.JWT_SECRET,
     );
   },
-  toJSON() {
+  toAuthJSON() {
     return {
       _id: this._id,
       userName: this.userName,
       token: `JWT ${this.createToken()}`,
       email: this.email,
+    };
+  },
+  toJSON() {
+    return {
+      _id: this._id,
+      userName: this.userName,
     };
   },
 };

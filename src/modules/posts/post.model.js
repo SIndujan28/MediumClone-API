@@ -43,6 +43,17 @@ PostSchema.methods = {
   _slugify() {
     this.slug = slug(this.title);
   },
+  toJSON() {
+    return {
+      _id: this._id,
+      title: this.title,
+      text: this.text,
+      createdAt: this.createdAt,
+      slug: this.slug,
+      user: this.user,
+      favouriteCount: this.favouriteCount,
+    };
+  },
 };
 PostSchema.statics = {
   createPost(args, user) {
@@ -50,6 +61,13 @@ PostSchema.statics = {
       ...args,
       user,
     });
+  },
+  list({ skip = 0, limit = 3 } = {}) {
+    return this.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .populate('user');
   },
 };
 
