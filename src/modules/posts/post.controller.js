@@ -1,5 +1,6 @@
 import HTTPStatus from 'http-status';
 import Post from './post.model';
+import User from './../users/user.model';
 
 export async function createPost(req, res) {
   try {
@@ -44,6 +45,29 @@ export async function updatePost(req, res) {
     });
     return res.status(HTTPStatus.OK).json(await post.save());
   } catch (e) {
-    res.status(HTTPStatus.BAD_REQUEST).json(e);
+    return res.status(HTTPStatus.BAD_REQUEST).json(e);
+  }
+}
+
+export async function deletePost(req, res) {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post.user.equals(req.user._id)) {
+      return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+    }
+    await post.remove();
+    return res.sendStatus(HTTPStatus.OK);
+  } catch (e) {
+    return res.status(HTTPStatus.BAD_REQUEST).json(e);
+  }
+}
+
+export async function favouritePost(req, res) {
+  try {
+    const user = await User.findById(req.user._id);
+    await user._favourites.posts(req.params.id);
+    return res.sendStatus(HTTPStatus.OK);
+  } catch (e) {
+    return res.status(HTTPStatus.BAD_REQUEST).json(e);
   }
 }

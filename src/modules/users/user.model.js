@@ -6,6 +6,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 import validator from 'validator';
 import { passwordConfig } from './user.validation';
 import constants from './../../config/constants';
+import Post from './../posts/post.model';
 
 const userSchema = new Schema({
   email: {
@@ -47,6 +48,13 @@ const userSchema = new Schema({
       message: '{VALUE} is not a valid password!',
     },
   },
+  favourites: {
+    posts: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Post',
+    }],
+
+  },
 }, { timestamps: true });
 userSchema.plugin(uniqueValidator, {
   message: '{VALUE} already taken ',
@@ -85,6 +93,20 @@ userSchema.methods = {
       _id: this._id,
       userName: this.userName,
     };
+  },
+  _favourites: {
+    async posts(postId) {
+      console.log(this.favourites.posts, postId);
+      if (this.favourites.posts.indexOf(postId) >= 0) {
+        this.favourites.posts.remove(postId);
+        await Post.decFavouriteCount(postId);
+      } else {
+        this.favourites.posts.push(postId);
+        await Post.incFavouriteCount(postId);
+      }
+
+      return this.save();
+    },
   },
 };
 
