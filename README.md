@@ -31,7 +31,7 @@ A Nodejs powered REST API for Content-Management-System alike Medium.This API pr
 ```
      npm install
 ```
-  or
+       or
 ```
     yarn install
 ```
