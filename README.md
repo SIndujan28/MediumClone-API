@@ -1,7 +1,7 @@
 # MediumClone-API
 A Nodejs powered REST API for Content-Management-System alike Medium.This API provides the ability for the people to follow any author and create a post. People can like the post and get notification when a user they follow create a new one.
 
-##Features
+## Features
 1. Authentication local + jwt
 2. User can create a post
 3. User can delete is own post and update it
@@ -19,9 +19,9 @@ A Nodejs powered REST API for Content-Management-System alike Medium.This API pr
 ## Getting started
 
  ### Prerequisites
-1.Install Nodejs using this [guide](https://nodejs.org/en/download/).
-2.Install [npm](https://www.npmjs.com/get-npm) or [yarn](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
-3.Install [MongoDB)[https://docs.mongodb.com/manual/installation/] and run the instance in available port.
+1. Install Nodejs using this [guide](https://nodejs.org/en/download/).
+2. Install [npm](https://www.npmjs.com/get-npm) or [yarn](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
+3. Install [MongoDB](https://docs.mongodb.com/manual/installation/) and run the instance in available port.
  ### Steps to reproduce locally
   1. Clone this repository
 ```bash
@@ -40,3 +40,11 @@ A Nodejs powered REST API for Content-Management-System alike Medium.This API pr
 ```bash
     npm run dev:build && npm run dev
 ```
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
