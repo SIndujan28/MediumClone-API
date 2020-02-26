@@ -35,8 +35,8 @@ A Nodejs powered REST API for Content-Management-System alike Medium.This API pr
 ```
     yarn install
 ```
-  3.Update the config file under src directory with mongoDB instance address.
-  3. Finally run this command to start the server.
+  3. Update the config file under src directory with mongoDB instance address.
+  4. Finally run this command to start the server.
 ```bash
     npm run dev:build && npm run dev
 ```
